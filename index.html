@@ -14,56 +14,63 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 
 </nav>
-<svg id="map" style="width: 2000px;height:100vh">
+
+<svg id="map" style="width:200vw; height:200vh;" >
 </svg>
-<section class="timeline">
+
+<div class="timeline">
     <ul>
         <li id="1900">1900</li>
         <li id="1945">1945</li>
         <li id="2000">2000</li>
     </ul>
-</section>
+</div>
 </body>
 
 <script>
-
+    var height=parseFloat($("svg").css("height"))
+    var width=parseFloat($("svg").css("width"))
     //创建一个地图投影
     var projection = d3.geoNaturalEarth1()
-        /*
-        .center([107,31])//设置投影的中心点 经纬度
-        .scale(550)//设置缩放因子
-        /*.translate([width/2,height/2]);//设置平移偏移量*/
+        .scale(600)
+        .translate([width/2,height/2])
 
     //创建一个地理路径生成器
     var geoPath = d3.geoPath()
         .projection(projection)//设置地理路径生成器的投影方式
 
-    var color = d3.schemeCategory10;
+
     var svg=d3.select('#map').selectAll('path')
     function update(geojson){
-        projection.fitWidth(2100,geojson)
+        projection.fitSize([0.8*width,0.8*height],geojson)
     }
     function drawmap(data) {
         console.log(data);
-        update(data);
+        //update(data);
+
+         var color = d3.scaleOrdinal()
+            .domain(d3.range(data.features.length))
+            .range(d3.schemePastel2);
+
             svg.remove();
             svg.data(data.features).enter()
             .append('path')
             .attr('d', geoPath)
+            .attr('stroke','gray')
+            .attr('stroke-width',1)
             .attr('fill', function (d, i) {
-                return color[i % 6];
+                return color(i);
             })
-            .on('mouseover', function (d, i) {
+            .on('mouseover', function () {
                 d3.select(this).attr('fill', 'green');
             })
-            .on('mouseout', function (d, i) {
-                d3.select(this).attr('fill', color[i % 6]);
+            .on('mouseout', function (d,i) {
+                d3.select(this).attr('fill', color(i));
             })
 
 
         }
-    //获取中国地图的json文件
-    //利用node.js 在本地起一个http-server
+
     function get2000() {
         d3.json('geojson/world_2000.geojson').then(drawmap)
     }
@@ -73,35 +80,18 @@
     function get1900() {
         d3.json('geojson/world_1900.geojson').then(drawmap)
     }
-    $("#2000").click(get2000())
+    get2000()
+    $("#2000").click(get2000)
     $('#1945').click(get1945)
     $('#1900').click(get1900)
+
         //新建一个颜色比例尺
        /* var scaleColor = d3.scaleOrdinal()
             .domain(d3.range(data.features.length))
             .range(d3.schemeCategory10);
 
 
-        //绘制区域
-        g.append('g')
-            .selectAll('path')
-            .data(data.features)
-            .enter()
-            .append('path')
-            .attr('stroke','gray')
-            .attr('strok-widht',1)
-            .attr('d',function (d,i) {
-                return geoPath(d);
-            })
-            .attr('fill',function (d,i) {
-                return scaleColor(i);
-            })
-            .on('mouseover',function (d,i) {
-                d3.select(this).attr('fill','yellow');
-            })
-            .on('mouseout',function (d,i) {
-                d3.select(this).attr('fill',scaleColor(i));
-            });
+
 
         //绘制文字
         g.append('g')
