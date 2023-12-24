@@ -1,0 +1,15 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+.timeline ul{
+    display: block;
+}
+
+.timeline li{
+    cursor: pointer;
+}
+svg{
+    background-image: url("../img/background-992858_1280.png");
+}
