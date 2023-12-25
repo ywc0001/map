@@ -84,7 +84,7 @@ svg path{
 }
 
 /* 导航条样式 */
-/* .timeline li:first-child{
+.timeline li:first-child{
     padding-right: 100px;
 }
 .timeline li:nth-child(2){
@@ -95,4 +95,4 @@ svg path{
 }
 .timeline li:nth-child(3){
     padding-right: 300px; 
-} */
+}

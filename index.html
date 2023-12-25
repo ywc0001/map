@@ -12,8 +12,15 @@
 
 <body>
 
-<svg id="map" style="width:200vw; height:200vh;" ></svg>
+<svg id="map" style="width:200vw; height:200vh;" >
 
+</svg>
+<svg style="display: none">
+    <symbol id="mappin" fill="none" stroke-width="1.5" stroke="red" viewBox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
+         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"></path>
+    </symbol>
+</svg>
     <div class="timeline">
         <ul>
             <li id="1800">1800</li>
@@ -347,8 +354,6 @@
     var geoPath = d3.geoPath()
         .projection(projection)//设置地理路径生成器的投影方式
 
-
-
     var path=d3.select('#map').selectAll('path')
     var text=d3.select('#map').selectAll('text')
     function update(geojson){
@@ -358,94 +363,93 @@
         console.log(data);
         //update(data);
         d3.select('#map').selectAll('*').remove();
-         var color = d3.scaleOrdinal()
+        var color = d3.scaleOrdinal()
             .domain(d3.range(data.features.length))
             .range(d3.schemePastel2);
 
-            path.data(data.features).enter()
-                .append('path')
-                .attr('d', geoPath)
-                .attr('stroke','gray')
-                .attr('stroke-width',1)
-                .attr('fill', function (d, i) {
-                    return color(i);
-                })
-                .on('mouseover', function () {
+        path.data(data.features).enter()
+            .append('path')
+            .attr('d', geoPath)
+            .attr('stroke', 'gray')
+            .attr('stroke-width', 1)
+            .attr('fill', function (d, i) {
+                return color(i);
+            })
+            .on('mouseover', function () {
                 d3.select(this).attr('fill', 'green')
-                    .attr('stroke','red')
+                    .attr('stroke', 'red')
 
-                })
-                .on('mouseout', function (d,i) {
+            })
+            .on('mouseout', function (d, i) {
                 d3.select(this).attr('fill', color(i))
-                    .attr('stroke','gray');
+                    .attr('stroke', 'gray');
+            })
+            .on('click', function (d, i) {
+                var flag = false;
+                var nation = this;
+                $(document).click(function (e) {
+                    if (!Object.is(e.target, nation) && flag) {
+                        $('.countryinfo').hide();
+                        flag = false;
+                    } else if (Object.is(e.target, nation)) {
+                        var id = d.properties.NAME;
+                        id = '#' + id.replace(/[^a-z0-9]/gi, "");
+                        console.log(id)
+                        $(id).show();
+                        flag = true;
+                    }
                 })
-                .on('click',function (d,i) {
-                    var flag=false;
-                    var nation=this;
-                    $(document).click(function (e) {
-                        if(!Object.is(e.target,nation) && flag){
-                            $('.countryinfo').hide();
-                            flag=false;
-                        }
-                        else if(Object.is(e.target,nation)){
-                            var id=d.properties.NAME;
-                            id='#'+id.replace(/[^a-z0-9]/gi,"");
-                            console.log(id)
-                            $(id).show();
-                            flag=true;
-                        }
-                    })
-                    //d3.event.sourceEvent.stopPropagation();
-                })
-                .append('title')
-                .text(function (d,i){
-                    return d.properties.NAME || 'N/A'
-                })
+                //d3.event.sourceEvent.stopPropagation();
+            })
+            .append('title')
+            .text(function (d, i) {
+                return d.properties.NAME || 'N/A'
+            })
 
-            text.data(data.features).enter()
-                .append('text')
-                .attr('text-anchor','middle')
-                .attr('x',function (d,i){
-                    var x=geoPath.centroid(d)
-                    return x[0]
-                })
-                .attr('y',function (d,i){
-                    var y=geoPath.centroid(d)
-                    return y[1]
-                })
-                .text(function (d,i){
-                    if (geoPath.area(d)>3500){
-                        return d.properties.NAME
-                    }
-                })
-                .attr('dy',function (d,i) {
-                    if(d.properties.NAME === 'United States') {
-                        return 50;
-                    }
-                    if(d.properties.NAME === 'French Indochina') {
-                        return 50;
-                    }
-                    if(d.properties.NAME === 'Cameroon') {
-                        return 20;
-                    }
-                })
-                .attr('dx',function (d,i) {
-                    if (d.properties.NAME === 'Canada') {
-                        return -100;
-                    }
-                    if (d.properties.NAME === 'Chile') {
-                        return -50;
-                    }
-                    if (d.properties.NAME === 'Namibia') {
-                        return -50;
-                    }
-                })
-                .style('visibility',function (d,i){
-                    if (d.properties.NAME === 'Cyraneica (UK Lybia)') {
-                        return 'hidden';
-                    }
-                })
-        }
+        text.data(data.features).enter()
+            .append('text')
+            .attr('text-anchor', 'middle')
+            .attr('x', function (d, i) {
+                var x = geoPath.centroid(d)
+                return x[0]
+            })
+            .attr('y', function (d, i) {
+                var y = geoPath.centroid(d)
+                return y[1]
+            })
+            .text(function (d, i) {
+                if (geoPath.area(d) > 3500) {
+                    return d.properties.NAME
+                }
+            })
+            .attr('dy', function (d, i) {
+                if (d.properties.NAME === 'United States') {
+                    return 50;
+                }
+                if (d.properties.NAME === 'French Indochina') {
+                    return 50;
+                }
+                if (d.properties.NAME === 'Cameroon') {
+                    return 20;
+                }
+            })
+            .attr('dx', function (d, i) {
+                if (d.properties.NAME === 'Canada') {
+                    return -100;
+                }
+                if (d.properties.NAME === 'Chile') {
+                    return -50;
+                }
+                if (d.properties.NAME === 'Namibia') {
+                    return -50;
+                }
+            })
+            .style('visibility', function (d, i) {
+                if (d.properties.NAME === 'Cyraneica (UK Lybia)') {
+                    return 'hidden';
+                }
+            })
+    }
 
     function get2000() {
         d3.json('geojson/world_2000.geojson').then(drawmap)
@@ -465,7 +469,9 @@
     function get1800(){
         d3.json('geojson/world_1800.geojson').then(drawmap)
     }
+
     get2000()
+
     $("#2000").click(get2000)
     $('#1945').click(get1945)
     $('#1900').click(get1900)
