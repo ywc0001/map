@@ -11,16 +11,14 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-
-    </nav>
-
 
 <svg id="map" style="width:200vw; height:200vh;" ></svg>
 
-
     <div class="timeline">
         <ul>
+            <li id="1800">1800</li>
+            <li id="1815">1815</li>
+            <li id="1880">1880</li>
             <li id="1900">1900</li>
             <li id="1945">1945</li>
             <li id="2000">2000</li>
@@ -375,7 +373,7 @@
                     return y[1]
                 })
                 .text(function (d,i){
-                    if (geoPath.area(d)>4000){
+                    if (geoPath.area(d)>3500){
                         return d.properties.NAME
                     }
                 })
@@ -383,12 +381,21 @@
                     if(d.properties.NAME === 'United States') {
                         return 50;
                     }
+                    if(d.properties.NAME === 'French Indochina') {
+                        return 50;
+                    }
+                    if(d.properties.NAME === 'Cameroon') {
+                        return 20;
+                    }
                 })
                 .attr('dx',function (d,i) {
                     if (d.properties.NAME === 'Canada') {
                         return -100;
                     }
                     if (d.properties.NAME === 'Chile') {
+                        return -50;
+                    }
+                    if (d.properties.NAME === 'Namibia') {
                         return -50;
                     }
                 })
@@ -408,14 +415,22 @@
     function get1900() {
         d3.json('geojson/world_1900.geojson').then(drawmap)
     }
+    function get1880(){
+        d3.json('geojson/world_1880.geojson').then(drawmap)
+    }
+    function get1815(){
+        d3.json('geojson/world_1815.geojson').then(drawmap)
+    }
+    function get1800(){
+        d3.json('geojson/world_1800.geojson').then(drawmap)
+    }
     get2000()
     $("#2000").click(get2000)
     $('#1945').click(get1945)
     $('#1900').click(get1900)
-
-
-
-
+    $('#1880').click(get1880)
+    $('#1815').click(get1815)
+    $('#1800').click(get1800)
 
 
 </script>
