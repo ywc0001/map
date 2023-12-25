@@ -27,7 +27,7 @@
 
 .timeline li{
     cursor: pointer;
-    font-size: 5em;
+    font-size: 3em;
     list-style-type:none ;
 }
 .timeline li:hover{
@@ -75,16 +75,24 @@ svg path{
 }
 /* 各国家信息文本 */
 .countryinfo p{
-    font-size: 36px;
+    font-size: 18px;
+    border: 18px solid #fff;
 }
 .countryinfo h1{
-    font-size: 60px;
+    font-size: 30px;
     text-align: center;
 }
+
 /* 导航条样式 */
+/* .timeline li:first-child{
+    padding-right: 100px;
+}
 .timeline li:nth-child(2){
     border-left: 15px solid #838585;
     border-right: 15px solid #838585;
-    padding-left: 400px;
-    padding-right: 400px;
+    padding-left: 200px;
+    padding-right: 200px;
 }
+.timeline li:nth-child(3){
+    padding-right: 300px; 
+} */
