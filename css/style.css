@@ -29,10 +29,35 @@
     font-size: 2em;
     list-style-type:none ;
 }
+.timeline li:hover{
+    color: blue;
+}
 
-
+.timeline li:hover{
+    color: blue;
+}
 
 svg{
+    cursor: pointer;
     overflow: visible;
     background-image: url("../img/background-992858_1280.png");
+}
+
+.countryinfo{
+    display: none;
+    position: fixed;
+    top:10%;right: 0;
+    width: 400px;
+    height: 70%;
+    overflow: scroll;
+    background-color: white;
+}
+
+h1{
+    font-size: 50px;
+}
+
+p{
+    font-family:  "微软雅黑";
+    font-size: 25px;
 }

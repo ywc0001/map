@@ -16,6 +16,7 @@
 </nav>
 
 <svg id="map" style="width:200vw; height:200vh;" >
+    <g></g>
 </svg>
 
 <div class="timeline">
@@ -24,6 +25,18 @@
         <li id="1945">1945</li>
         <li id="2000">2000</li>
     </ul>
+</div>
+
+<div class="countryinfo" id="Russia">
+    <h1>俄罗斯</h1>
+    <p>俄罗斯历史始于东斯拉夫人，亦是后来的俄罗斯人、乌克兰人和白俄罗斯人。基辅罗斯是东斯拉夫人建立的第一个国家。988年开始，东正教从拜占庭帝国传入基辅罗斯，由此拉开拜占庭和斯拉夫文化的融合，并最终形成占据未来700年时间的俄罗斯文化。13世纪初，基辅罗斯被蒙古人占领后，最终分裂成多个国家，这些国家都自称为是俄罗斯文化和地位的正统继承人。<br>
+13世纪以后，莫斯科逐渐成为原先基辅罗斯文化的中心；16世纪中叶伊凡四世时代，莫斯科大公国改称沙皇俄国；到18世纪彼得一世时代，已变成为庞大的俄罗斯帝国，横跨从波兰到太平洋的广袤地域；1861年，俄罗斯废除农奴制度，随后农民不断增加，对土地的需求也不断增长，急剧加大革命的压力；从废除农奴制度到1914年第一次世界大战爆发，俄国推出斯托雷平改革；1906年宪法和国家杜马，极大地改变其经济和政治状况，只是沙皇依然没有意愿放弃独裁统治。
+军事战败和食物短缺引发1917年俄国革命，此后共产主义布尔什维克登上权力的舞台，建立苏维埃社会主义国家联盟。从1922年至1991年，苏联逐渐成长为一个超级大国。但随着经济和政治体制的缺点所引发的矛盾越来越尖锐，1991年苏联解体。<br>
+1991年后，俄罗斯联邦成立并继承苏联在国际事务中的地位。然而，俄罗斯已不再是超级大国。直至今日，俄罗斯的政治经济结构依然带有沙俄和苏联的特点。</p>
+</div>
+<div class="countryinfo" id="">         <!--国家信息填在这里，id需要严格按照在地图文件中显示的国家名字来填，否则触发不了弹窗-->
+    <h1></h1>
+    <p></p>
 </div>
 </body>
 
@@ -39,8 +52,10 @@
     var geoPath = d3.geoPath()
         .projection(projection)//设置地理路径生成器的投影方式
 
+    var flag=false;
 
-    var svg=d3.select('#map').selectAll('path')
+    var path=d3.select('#map').select("g").selectAll('path')
+    var text=d3.select('#map').select("g").selectAll('text')
     function update(geojson){
         projection.fitSize([0.8*width,0.8*height],geojson)
     }
@@ -52,23 +67,33 @@
             .domain(d3.range(data.features.length))
             .range(d3.schemePastel2);
 
-            svg.remove();
-            svg.data(data.features).enter()
-            .append('path')
-            .attr('d', geoPath)
-            .attr('stroke','gray')
-            .attr('stroke-width',1)
-            .attr('fill', function (d, i) {
-                return color(i);
-            })
-            .on('mouseover', function () {
-                d3.select(this).attr('fill', 'green');
-            })
-            .on('mouseout', function (d,i) {
-                d3.select(this).attr('fill', color(i));
-            })
+            path.remove()
+                .data(data.features).enter()
+                .append('path')
+                .attr('d', geoPath)
+                .attr('stroke','gray')
+                .attr('stroke-width',1)
+                .attr('fill', function (d, i) {
+                    return color(i);
+                })
+                .on('mouseover', function () {
+                d3.select(this).attr('fill', 'green')
+                    .attr('stroke','red')
 
-
+                })
+                .on('mouseout', function (d,i) {
+                d3.select(this).attr('fill', color(i))
+                    .attr('stroke','gray');
+                })
+                .on('click',function (d,i) {
+                    var id='#'+d.properties.NAME;
+                    d3.select(id)
+                        .style('display','block');
+                })
+                .append('title')
+                .text(function (d,i){
+                    return d.properties.NAME || 'N/A'
+                })
         }
 
     function get2000() {
