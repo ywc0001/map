@@ -38,7 +38,6 @@
 }
 
 svg{
-    cursor: pointer;
     overflow: visible;
     background-image: url("../img/background-992858_1280.png");
 }
@@ -60,4 +59,15 @@ h1{
 p{
     font-family:  "微软雅黑";
     font-size: 25px;
+}
+
+svg text{
+    font-family: "Papyrus",fantasy;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+svg path{
+    cursor: pointer;
 }

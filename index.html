@@ -15,9 +15,7 @@
 
 </nav>
 
-<svg id="map" style="width:200vw; height:200vh;" >
-    <g></g>
-</svg>
+<svg id="map" style="width:200vw; height:200vh;" ></svg>
 
 <div class="timeline">
     <ul>
@@ -52,23 +50,22 @@
     var geoPath = d3.geoPath()
         .projection(projection)//设置地理路径生成器的投影方式
 
-    var flag=false;
 
-    var path=d3.select('#map').select("g").selectAll('path')
-    var text=d3.select('#map').select("g").selectAll('text')
+
+    var path=d3.select('#map').selectAll('path')
+    var text=d3.select('#map').selectAll('text')
     function update(geojson){
         projection.fitSize([0.8*width,0.8*height],geojson)
     }
     function drawmap(data) {
         console.log(data);
         //update(data);
-
+        d3.select('#map').selectAll('*').remove();
          var color = d3.scaleOrdinal()
             .domain(d3.range(data.features.length))
             .range(d3.schemePastel2);
 
-            path.remove()
-                .data(data.features).enter()
+            path.data(data.features).enter()
                 .append('path')
                 .attr('d', geoPath)
                 .attr('stroke','gray')
@@ -86,13 +83,59 @@
                     .attr('stroke','gray');
                 })
                 .on('click',function (d,i) {
-                    var id='#'+d.properties.NAME;
-                    d3.select(id)
-                        .style('display','block');
+                    var flag=false;
+                    var nation=this;
+                    $(document).click(function (e) {
+                        if(!Object.is(e.target,nation) && flag){
+                            $('.countryinfo').hide();
+                            flag=false;
+                        }
+                        else if(Object.is(e.target,nation)){
+                            var id='#'+d.properties.NAME;
+                            $(id).show();
+                            flag=true;
+                        }
+                    })
+                    //d3.event.sourceEvent.stopPropagation();
                 })
                 .append('title')
                 .text(function (d,i){
                     return d.properties.NAME || 'N/A'
+                })
+
+            text.data(data.features).enter()
+                .append('text')
+                .attr('text-anchor','middle')
+                .attr('x',function (d,i){
+                    var x=geoPath.centroid(d)
+                    return x[0]
+                })
+                .attr('y',function (d,i){
+                    var y=geoPath.centroid(d)
+                    return y[1]
+                })
+                .text(function (d,i){
+                    if (geoPath.area(d)>4000){
+                        return d.properties.NAME
+                    }
+                })
+                .attr('dy',function (d,i) {
+                    if(d.properties.NAME === 'United States') {
+                        return 50;
+                    }
+                })
+                .attr('dx',function (d,i) {
+                    if (d.properties.NAME === 'Canada') {
+                        return -100;
+                    }
+                    if (d.properties.NAME === 'Chile') {
+                        return -50;
+                    }
+                })
+                .style('visibility',function (d,i){
+                    if (d.properties.NAME === 'Cyraneica (UK Lybia)') {
+                        return 'hidden';
+                    }
                 })
         }
 
@@ -110,41 +153,10 @@
     $('#1945').click(get1945)
     $('#1900').click(get1900)
 
-        //新建一个颜色比例尺
-       /* var scaleColor = d3.scaleOrdinal()
-            .domain(d3.range(data.features.length))
-            .range(d3.schemeCategory10);
 
 
 
 
-        //绘制文字
-        g.append('g')
-            .selectAll('text')
-            .data(data.features)
-            .enter()
-            .append('text')
-            .attr('font-size',12)
-            .attr('text-anchor', 'middle')
-            .attr('x',function (d,i) {
-                var position = mercator(d.properties.centroid || [0,0]);
-                return position[0];
-            })
-            .attr('y',function (d,i) {
-                var position = mercator(d.properties.centroid || [0,0]);
-                return position[1];
-            })
-            .attr('dy',function (d,i) {
-                //这里为什么这么写呢，因为澳门和香港重合了，挤到一起了。
-                if (d.properties.name === '澳门特别行政区') {
-                    return 10;
-                }
-            })
-            .text(function (d,i) {
-               return d.properties.name;
-            });
-
-    });*/
 
 </script>
 <script src="javascript/bootstrap.min.js"></script>
