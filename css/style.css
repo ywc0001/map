@@ -30,6 +30,7 @@
     font-size: 3em;
     list-style-type:none ;
 }
+
 .timeline li:hover{
     color: blue;
 }
@@ -42,10 +43,11 @@ svg{
 .countryinfo{
     display: none;
     position: fixed;
-    top:10%;
+    top:5%;
     right:0;
-    width: 600px;
-    height: 70%;
+    width: 500px;
+    height: fit-content;
+    max-height: 90%;
     overflow: scroll;
     background-color: white;
     border-top-left-radius: 8px;

@@ -175,7 +175,7 @@
         <p>墨西哥，北美洲的一个国家，也是拉丁美洲最大的经济体之一，其历史可以追溯到数千年前的玛雅文明和阿兹特克帝国。在16世纪初，西班牙人抵达墨西哥，开始了长达300年的殖民统治。在这期间，西班牙人带来了欧洲的文化、宗教和语言，对墨西哥产生了深远的影响。<br>
             在19世纪初，墨西哥人民开始了长达十年的独立战争，最终在1821年获得独立。独立后的墨西哥经历了一系列的政治和经济动荡，包括内战、革命和政治暴力。在20世纪，墨西哥也经历了工业化、现代化和民主化的过程。<br>
         </p>
-    </div><br>
+    </div>
     <div class="countryinfo" id="Brazil">
         <h1>巴西</h1>
         <p>巴西的历史可以追溯到数千年前，当时这里是许多不同原住民部落的居住地。在16世纪，葡萄牙人抵达巴西，开始了长达300多年的殖民统治。在这期间，巴西的资源被大量开采，尤其是奴隶劳动力，用于出口经济的发展。<br><br>
@@ -489,8 +489,8 @@
 </body>
 
 <script>
-    var height=parseFloat($("svg").css("height"))
-    var width=parseFloat($("svg").css("width"))
+    var height=parseFloat($("#map").css("height"))
+    var width=parseFloat($("#map").css("width"))
     //创建一个地图投影
     var projection = d3.geoNaturalEarth1()
         .scale(600)
@@ -502,12 +502,10 @@
 
     var path=d3.select('#map').selectAll('path')
     var text=d3.select('#map').selectAll('text')
-    function update(geojson){
+    /*function update(geojson){
         projection.fitSize([0.8*width,0.8*height],geojson)
-    }
+    }*/
     function drawmap(data) {
-        console.log(data);
-        //update(data);
         d3.select('#map').selectAll('*').remove();
         var color = d3.scaleOrdinal()
             .domain(d3.range(data.features.length))
@@ -540,12 +538,10 @@
                     } else if (Object.is(e.target, nation)) {
                         var id = d.properties.NAME;
                         id = '#' + id.replace(/[^a-z0-9]/gi, "");
-                        console.log(id)
                         $(id).show();
                         flag = true;
                     }
                 })
-                //d3.event.sourceEvent.stopPropagation();
             })
             .append('title')
             .text(function (d, i) {
@@ -580,6 +576,9 @@
                 }
             })
             .attr('dx', function (d, i) {
+                if (d.properties.NAME === 'United States') {
+                    return 50;
+                }
                 if (d.properties.NAME === 'Canada') {
                     return -100;
                 }
@@ -636,7 +635,6 @@
     $('#1880').click(get1880)
     $('#1815').click(get1815)
     $('#1800').click(get1800)
-
 
 </script>
 <script src="javascript/bootstrap.min.js"></script>
