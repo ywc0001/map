@@ -34,8 +34,6 @@
     color: blue;
 }
 
-
-
 svg{
     overflow: visible;
     background-image: url("../img/background-992858_1280.png");
@@ -75,7 +73,7 @@ svg path{
 }
 /* 各国家信息文本 */
 .countryinfo p{
-    font-size: 18px;
+    font-size: 26px;
     border: 18px solid #fff;
 }
 .countryinfo h1{

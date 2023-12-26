@@ -251,7 +251,7 @@
         <p>南非是人类起源的地方之一，有着悠久的考古和人类化石遗址。最早的居民是科伊桑人，后来被从北部非洲迁移过来的班图人征服和同化。南非也是贸易中心，与印度洋沿岸的穆斯林商人和欧洲探险家有往来。<br>
             荷兰殖民时期（1652年-1815年）：荷兰东印度公司在开普敦建立了一个补给站，逐渐扩大了对南非的控制。荷兰移民被称为阿非利卡人，他们与当地的黑人和有色人发生了冲突和通婚，形成了布尔人这一独特的族群。布尔人后来向内陆迁移，建立了几个布尔共和国。英国也对南非有兴趣，于1795年和1806年两次占领开普殖民地。<br>
             英国殖民时期（1815年-1910年）：英国在拿破仑战争中占领了开普殖民地，并与布尔人发生了两次布尔战争。英国也在纳塔尔殖民地和德兰士瓦共和国与祖鲁王国交战。最终英国战胜了布尔人，统一了南非，在南非推行了英语教育、反奴隶制和种族平等的政策，引起了布尔人的反抗
-        </p><br>
+        </p>
     </div>
     <div class="countryinfo" id="Madagascar">
         <h1>马达加斯加</h1>
@@ -598,22 +598,34 @@
     }
 
     function get2000() {
-        d3.json('geojson/world_2000.geojson').then(drawmap)
+        d3.json('geojson/world_2000.geojson').then(drawmap);
+        $('li').css('font-weight','normal')
+        $('#2000').css('font-weight','bold')
     }
     function get1945() {
         d3.json('geojson/world_1945.geojson').then(drawmap)
+        $('li').css('font-weight','normal')
+        $('#1945').css('font-weight','bold')
     }
     function get1900() {
         d3.json('geojson/world_1900.geojson').then(drawmap)
+        $('li').css('font-weight','normal')
+        $('#1900').css('font-weight','bold')
     }
     function get1880(){
         d3.json('geojson/world_1880.geojson').then(drawmap)
+        $('li').css('font-weight','normal')
+        $('#1880').css('font-weight','bold')
     }
     function get1815(){
         d3.json('geojson/world_1815.geojson').then(drawmap)
+        $('li').css('font-weight','normal')
+        $('#1815').css('font-weight','bold')
     }
     function get1800(){
         d3.json('geojson/world_1800.geojson').then(drawmap)
+        $('li').css('font-weight','normal')
+        $('#1800').css('font-weight','bold')
     }
 
     get2000()
