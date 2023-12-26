@@ -9,60 +9,17 @@
     justify-content: center;
 }*/
 
-.timeline{
-    position: fixed;
-    bottom: 0;
-    /*height: fit-content;*/
-    width: 100vw;
-    background-color: #9d9d9d;
-
-}
-
-.timeline ul{
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-around;
-    background-color: white;
-}
-
-.timeline li{
-    cursor: pointer;
-    font-size: 3em;
-    list-style-type:none ;
-}
-.timeline li:hover{
-    color: blue;
-}
-
-
+/*.timeline ul{*/
+/*    display: flex;*/
+/*    margin: 0 auto;*/
+/*    justify-content: space-around;*/
+/*    background-color: white;*/
+/*}*/
 
 svg{
     overflow: visible;
     background-image: url("../img/background-992858_1280.png");
 }
-
-.countryinfo{
-    display: none;
-    position: fixed;
-    top:10%;
-    right:0;
-    width: 600px;
-    height: 70%;
-    overflow: scroll;
-    background-color: white;
-    border-top-left-radius: 8px;
-    border: 10px solid #cbc2c2;
-}
-
-h1{
-    font-size: 50px;
-}
-
-p{
-    font-family:  "微软雅黑";
-    font-size: 25px;
-}
-
 svg text{
     font-family: "Papyrus",fantasy;
     font-size: 2vh;
@@ -73,25 +30,62 @@ svg text{
 svg path{
     cursor: pointer;
 }
-/* 各国家信息文本 */
-.countryinfo p{
-    font-size: 18px;
-    border: 18px solid #fff;
+/* 国家信息样式*/
+.countryinfo{
+    display: none;
+    position: fixed;
+    top:10%;
+    right:1%;
+    width: 600px;
+    height: 70%;
+    padding: 30px;
+    overflow: scroll;
+    background-color: white;
+    border-radius: 8px;
+    border: 10px solid white;
 }
+.countryinfo::-webkit-scrollbar{
+    display: none; //隐藏滚动条
+}
+.countryinfo p{
+    font-family:Microsoft YaHei,Serif;
+    font-size: 25px;
+    white-space: pre-line;//合并空白符序列，保留换行符
+    padding: 10px;
+    border: none;
+    color: #444444;
+}
+
 .countryinfo h1{
     font-size: 30px;
-    text-align: center;
+    font-family: SimHei, serif;
+    font-weight: bolder;
+    text-align: left;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #999999;
 }
 
 /* 时间轴样式 */
+.timeline{
+    position: fixed;
+    bottom: 0;
+    /*height: fit-content;*/
+    width: 100vw;
+    background-color: #9d9d9d;
+
+}
 .timeline ul{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     background-color: #faf2cc;
+
 }
 .timeline li{
+    font-size: 3em;
+    list-style-type:none ;
     text-align: center;
     border-right: 10px solid #FDC830;
+    cursor: pointer;
 }
 .timeline li:nth-child(1){
     border-left: 20px solid #2e6da4;
