@@ -3,26 +3,6 @@
     padding: 0;
 }
 
-/*body{
-    display: flex;
-    justify-content: center;
-}*/
-
-/*.timeline ul{*/
-/*    display: flex;*/
-/*    margin: 0 auto;*/
-/*    justify-content: space-around;*/
-/*    background-color: white;*/
-/*}*/
-.timeline{
-    position: fixed;
-    bottom: 0;
-    /*height: fit-content;*/
-    width: 100vw;
-    background-color: #9d9d9d;
-
-}
-
 .timeline ul{
     display: flex;
     margin: 0 auto;
@@ -40,10 +20,14 @@
     color: blue;
 }
 
-svg{
+
+#map{
     overflow: visible;
     background-image: url("../img/background-992858_1280.png");
+    min-width: 200vw;
+    min-height: 200vh;
 }
+
 .countryinfo{
     display: none;
     position: fixed;
@@ -122,12 +106,10 @@ svg path{
     bottom: 0;
     /*height: fit-content;*/
     width: 100vw;
-    background-color: #9d9d9d;
-
 }
 .timeline ul{
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     background-color: #faf2cc;
 
 }

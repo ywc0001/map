@@ -11,10 +11,9 @@
 </head>
 
 <body>
-
-<svg id="map" style="width:200vw; height:200vh;" >
-
-</svg>
+<div id="container">
+<svg id="map" style="width:200vw; height:200vh;" ></svg>
+</div>
 <svg style="display: none">
     <symbol id="mappin" fill="none" stroke-width="1.5" stroke="red" viewBox="0 0 24 24">
          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
@@ -22,10 +21,13 @@
     </symbol>
 </svg>
     <div class="timeline">
+        <button></button>
         <ul>
-            <li id="1800">1800</li>
+            <li id="1200">1200</li>
+            <li id="1530">1530</li>
+            <li id="1650">1650</li>
+            <li id="1783">1783</li>
             <li id="1815">1815</li>
-            <li id="1880">1880</li>
             <li id="1900">1900</li>
             <li id="1945">1945</li>
             <li id="2000">2000</li>
@@ -39,7 +41,8 @@
         <p>俄罗斯历史始于东斯拉夫人，亦是后来的俄罗斯人、乌克兰人和白俄罗斯人。基辅罗斯是东斯拉夫人建立的第一个国家。988年开始，东正教从拜占庭帝国传入基辅罗斯，由此拉开拜占庭和斯拉夫文化的融合，并最终形成占据未来700年时间的俄罗斯文化。13世纪初，基辅罗斯被蒙古人占领后，最终分裂成多个国家，这些国家都自称为是俄罗斯文化和地位的正统继承人。<br>
     13世纪以后，莫斯科逐渐成为原先基辅罗斯文化的中心；16世纪中叶伊凡四世时代，莫斯科大公国改称沙皇俄国；到18世纪彼得一世时代，已变成为庞大的俄罗斯帝国，横跨从波兰到太平洋的广袤地域；1861年，俄罗斯废除农奴制度，随后农民不断增加，对土地的需求也不断增长，急剧加大革命的压力；从废除农奴制度到1914年第一次世界大战爆发，俄国推出斯托雷平改革；1906年宪法和国家杜马，极大地改变其经济和政治状况，只是沙皇依然没有意愿放弃独裁统治。<br>
     军事战败和食物短缺引发1917年俄国革命，此后共产主义布尔什维克登上权力的舞台，建立苏维埃社会主义国家联盟。从1922年至1991年，苏联逐渐成长为一个超级大国。但随着经济和政治体制的缺点所引发的矛盾越来越尖锐，1991年苏联解体。<br>
-    1991年后，俄罗斯联邦成立并继承苏联在国际事务中的地位。然而，俄罗斯已不再是超级大国。直至今日，俄罗斯的政治经济结构依然带有沙俄和苏联的特点。</p>
+    1991年后，俄罗斯联邦成立并继承苏联在国际事务中的地位。然而，俄罗斯已不再是超级大国。直至今日，俄罗斯的政治经济结构依然带有沙俄和苏联的特点。
+        </p>
     </div>
     <div class="countryinfo" id="China">
         <h1>中国</h1>
@@ -66,7 +69,6 @@
         </p>
     </div>
     <div class="countryinfo" id="KoreaDemocraticPeoplesRepublicof">
-        <!-- 问题：未显示 -->
         <h1>朝鲜</h1>
         <p>朝鲜民主主义人民共和国，简称“朝鲜”，是位于东亚朝鲜半岛北部的社会主义国家，执政党是朝鲜劳动党，首都平壤。<br>
             1910年至1945年，朝鲜半岛沦为日本殖民地。1945年8月日本投降，苏美军队分别进驻半岛北南部。1948年9月9日朝鲜民主主义人民共和国宣告成立。<br>
@@ -81,7 +83,7 @@
         <p>印度共和国，简称“印度”，是一个位于南亚的国家.大约在公元前2600年至公元前1900年之间，印度河流域出现了哈拉帕文明，这是印度最早的已知文明。<br>
             吠陀时代：大约在公元前1500年至公元前600年之间，印度进入了吠陀时代，这是印度宗教、哲学和文学的重要时期。<br>
             公元前320年至公元前185年，印度历史上最伟大的王朝之一孔雀王朝，统治了几乎整个印度次大陆。公元4世纪初，笈多王朝崛起，并在5世纪达到了巅峰，成为了印度历史上最伟大的王朝之一。<br>
-            16世纪，莫卧儿帝国征服了印度大部分地区，带来了伊斯兰文化和影响。18世纪中叶，英国开始对印度进行殖民统治，这持续了近两个世纪。<br><
+            16世纪，莫卧儿帝国征服了印度大部分地区，带来了伊斯兰文化和影响。18世纪中叶，英国开始对印度进行殖民统治，这持续了近两个世纪。<br>
             20世纪初，印度开始了争取独立的运动，最终在1947年获得独立。独立后的印度经历了政治、经济和社会变革，成为了一个全球重要的经济体和民主国家。
         </p>
     </div>
@@ -568,7 +570,7 @@
                 return y[1]
             })
             .text(function (d, i) {
-                if (geoPath.area(d) > 3500) {
+                if (geoPath.area(d) > 3000) {
                     return d.properties.NAME
                 }
             })
@@ -619,31 +621,56 @@
         $('li').css('font-weight','normal')
         $('#1900').css('font-weight','bold')
     }
-    function get1880(){
-        d3.json('geojson/world_1880.geojson').then(drawmap)
-        $('li').css('font-weight','normal')
-        $('#1880').css('font-weight','bold')
-    }
     function get1815(){
         d3.json('geojson/world_1815.geojson').then(drawmap)
         $('li').css('font-weight','normal')
         $('#1815').css('font-weight','bold')
     }
-    function get1800(){
-        d3.json('geojson/world_1800.geojson').then(drawmap)
+    function get1783(){
+        d3.json('geojson/world_1783.geojson').then(drawmap)
         $('li').css('font-weight','normal')
-        $('#1800').css('font-weight','bold')
+        $('#1783').css('font-weight','bold')
     }
-
+     function get1650(){
+        d3.json('geojson/world_1650.geojson').then(drawmap)
+        $('li').css('font-weight','normal')
+        $('#1650').css('font-weight','bold')
+    }
+     function get1530(){
+        d3.json('geojson/world_1530.geojson').then(drawmap)
+        $('li').css('font-weight','normal')
+        $('#1530').css('font-weight','bold')
+    }
+     function get1200(){
+        d3.json('geojson/world_1200.geojson').then(drawmap)
+        $('li').css('font-weight','normal')
+        $('#1200').css('font-weight','bold')
+    }
     get2000()
 
     $("#2000").click(get2000)
-    $('#1945').click(get1945)
-    $('#1900').click(get1900)
-    $('#1880').click(get1880)
-    $('#1815').click(get1815)
-    $('#1800').click(get1800)
+    $("#1945").click(get1945)
+    $("#1900").click(get1900)
+    $("#1815").click(get1815)
+    $("#1783").click(get1783)
+    $("#1650").click(get1650)
+    $("#1530").click(get1530)
+    $("#1200").click(get1200)
 
+    /*$("#map").bind('wheel',function (e){
+        var w=e.originalEvent,c=$("#map")
+        if (w.ctrlKey) {
+            e.preventDefault()
+            if (w.deltaY > 0) {
+                console.log('向内');
+                c.css("transform",`scale(${w.deltaY/w.deltaY-0.1})`)
+            }
+            else if (w.deltaY < 0) {
+                console.log(w.deltaY);
+                c.css("transform",`scale(${w.deltaY/w.deltaY+0.1})`)
+            }
+        }
+    })*/
 </script>
 <script src="javascript/bootstrap.min.js"></script>
 </html>
