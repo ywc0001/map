@@ -1,7 +1,6 @@
 *{
     margin:0;
     padding: 0;
-
 }
 
 /*body{
@@ -15,11 +14,54 @@
 /*    justify-content: space-around;*/
 /*    background-color: white;*/
 /*}*/
+.timeline{
+    position: fixed;
+    bottom: 0;
+    /*height: fit-content;*/
+    width: 100vw;
+    background-color: #9d9d9d;
+
+}
+
+.timeline ul{
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.timeline li{
+    cursor: pointer;
+    font-size: 3em;
+    list-style-type:none ;
+}
+
+.timeline li:hover{
+    color: blue;
+}
 
 svg{
     overflow: visible;
     background-image: url("../img/background-992858_1280.png");
 }
+.countryinfo{
+    display: none;
+    position: fixed;
+    top:5%;
+    right:0;
+    width: 500px;
+    height: fit-content;
+    max-height: 90%;
+    overflow: scroll;
+    background-color: white;
+    border-top-left-radius: 8px;
+    border: 10px solid #cbc2c2;
+}
+
+h1{
+    font-size: 50px;
+}
+
 svg text{
     font-family: "Papyrus",fantasy;
     font-size: 2vh;
@@ -44,11 +86,18 @@ svg path{
     border-radius: 8px;
     border: 10px solid white;
 }
+/* 各国家信息文本 */
+.countryinfo p{
+    font-size: 26px;
+    border: 18px solid #fff;
+}
 .countryinfo::-webkit-scrollbar{
     display: none; //隐藏滚动条
 }
 .countryinfo p{
-    font-family:Microsoft YaHei,Serif;
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,
+    Microsoft Yahei
+    sans-serif;
     font-size: 25px;
     white-space: pre-line;//合并空白符序列，保留换行符
     padding: 10px;
@@ -58,7 +107,9 @@ svg path{
 
 .countryinfo h1{
     font-size: 30px;
-    font-family: SimHei, serif;
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,
+    Microsoft Yahei
+    sans-serif;
     font-weight: bolder;
     text-align: left;
     padding-bottom: 20px;
