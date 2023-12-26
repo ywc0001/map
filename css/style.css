@@ -83,16 +83,25 @@ svg path{
     text-align: center;
 }
 
-/* 导航条样式 */
-.timeline li:first-child{
-    padding-right: 100px;
+/* 时间轴样式 */
+.timeline ul{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background-color: #faf2cc;
 }
-.timeline li:nth-child(2){
-    border-left: 15px solid #838585;
-    border-right: 15px solid #838585;
-    padding-left: 200px;
-    padding-right: 200px;
+.timeline li{
+    text-align: center;
+    border-right: 10px solid #FDC830;
 }
-.timeline li:nth-child(3){
-    padding-right: 300px; 
+.timeline li:nth-child(1){
+    border-left: 20px solid #2e6da4;
 }
+.timeline li:last-child{
+    border-right: 20px solid #2e6da4;
+    //TODO：最右侧效果未应用
+}
+.timeline li:hover{
+    font-weight: bold;
+    color: #2e6da4;
+}
+
