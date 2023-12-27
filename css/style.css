@@ -24,8 +24,6 @@
 #map{
     overflow: visible;
     background-image: url("../img/background-992858_1280.png");
-    min-width: 200vw;
-    min-height: 200vh;
 }
 
 .countryinfo{
