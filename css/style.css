@@ -3,23 +3,12 @@
     padding: 0;
 }
 
-.timeline ul{
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-around;
-    background-color: white;
-}
-
-.timeline li{
-    cursor: pointer;
-    font-size: 3em;
-    list-style-type:none ;
-}
-
-.timeline li:hover{
-    color: blue;
-}
-
+/*.timeline ul{*/
+/*    display: flex;*/
+/*    margin: 0 auto;*/
+/*    justify-content: space-around;*/
+/*    background-color: white;*/
+/*}*/
 
 #map{
     overflow: visible;
@@ -28,23 +17,6 @@
     min-height: 200vh;
 }
 
-.countryinfo{
-    display: none;
-    position: fixed;
-    top:5%;
-    right:0;
-    width: 500px;
-    height: fit-content;
-    max-height: 90%;
-    overflow: scroll;
-    background-color: white;
-    border-top-left-radius: 8px;
-    border: 10px solid #cbc2c2;
-}
-
-h1{
-    font-size: 50px;
-}
 
 svg text{
     font-family: "Papyrus",fantasy;
@@ -63,7 +35,8 @@ svg path{
     top:10%;
     right:1%;
     width: 600px;
-    height: 70%;
+    height: fit-content;
+    max-height: 90%;
     padding: 30px;
     overflow: scroll;
     background-color: white;
@@ -110,7 +83,9 @@ svg path{
 .timeline ul{
     display: grid;
     grid-template-columns: repeat(8, 1fr);
+    height: fit-content(5%);
     background-color: #faf2cc;
+    margin: 0 auto;
 
 }
 .timeline li{
