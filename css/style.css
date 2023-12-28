@@ -2,25 +2,6 @@
     margin:0;
     padding: 0;
 }
-
-.timeline ul{
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-around;
-    background-color: white;
-}
-
-.timeline li{
-    cursor: pointer;
-    font-size: 3em;
-    list-style-type:none ;
-}
-
-.timeline li:hover{
-    color: blue;
-}
-
-
 #map{
     overflow: visible;
     background-image: url("../img/background-992858_1280.png");
@@ -32,16 +13,8 @@
     top:5%;
     right:0;
     width: 500px;
-    height: fit-content;
-    max-height: 90%;
-    overflow: scroll;
-    background-color: white;
-    border-top-left-radius: 8px;
-    border: 10px solid #cbc2c2;
-}
+  
 
-h1{
-    font-size: 50px;
 }
 
 svg text{
@@ -54,6 +27,19 @@ svg text{
 svg path{
     cursor: pointer;
 }
+
+@keyframes changeColor{
+    0% {
+        background-color:#F7CFEF;
+      }
+      50%{
+        background-color:#75CBE0;
+    }
+      100% {
+        background-color: #B4DC8C;
+ }
+}
+
 /* 国家信息样式*/
 .countryinfo{
     display: none;
@@ -61,29 +47,28 @@ svg path{
     top:10%;
     right:1%;
     width: 600px;
-    height: 70%;
+    height: fit-content;
+    max-height: 80%;
     padding: 30px;
     overflow: scroll;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-radius: 8px;
-    border: 10px solid white;
+    overflow: scroll;
 }
 /* 各国家信息文本 */
-.countryinfo p{
-    font-size: 26px;
-    border: 18px solid #fff;
-}
+
 .countryinfo::-webkit-scrollbar{
-    display: none; //隐藏滚动条
+    /* 隐藏滚动条 */
+    display: none; 
 }
 .countryinfo p{
     font-family:system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,
     Microsoft Yahei
     sans-serif;
     font-size: 25px;
-    white-space: pre-line;//合并空白符序列，保留换行符
+    white-space: pre-line;
+    /* 合并空白符序列，保留换行符 */
     padding: 10px;
-    border: none;
     color: #444444;
 }
 
@@ -105,17 +90,19 @@ svg path{
     /*height: fit-content;*/
     width: 100vw;
 }
+
 .timeline ul{
     display: grid;
+    margin: 0 auto;
     grid-template-columns: repeat(8, 1fr);
-    background-color: #faf2cc;
-
+    background-color: #FFD4C7;
+    animation:changeColor 10s ease-in-out infinite;
 }
 .timeline li{
     font-size: 3em;
     list-style-type:none ;
     text-align: center;
-    border-right: 10px solid #FDC830;
+    border-right: 2px solid #197195;
     cursor: pointer;
 }
 .timeline li:nth-child(1){
@@ -123,10 +110,15 @@ svg path{
 }
 .timeline li:last-child{
     border-right: 20px solid #2e6da4;
-    //TODO：最右侧效果未应用
+   /*  //TODO：最右侧效果未应用 */
 }
 .timeline li:hover{
     font-weight: bold;
     color: #2e6da4;
 }
+
+.timeline ul:hover{
+    color: #999999;
+}
+
 
