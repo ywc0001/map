@@ -1765,7 +1765,7 @@
     var path=g.selectAll('path')
     var text=g.selectAll('text')
 
-    const zoom=d3.zoom().scaleExtent(1,5).translateExtent([[-1000.-500],[width+1000,height+500]]).on("zoom",zoomed)
+    const zoom=d3.zoom().scaleExtent([1,5]).translateExtent([[-1000.-500],[width+1000,height+500]]).on("zoom",zoomed)
     svg.call(zoom)
     svg.on('wheel',function (){
         d3.event.preventDefault()
