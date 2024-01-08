@@ -1,20 +1,9 @@
-*{
-    margin:0;
-    padding: 0;
+body{
+    overflow: hidden;
 }
+
 #map{
-    overflow: visible;
     background-image: url("../img/background-992858_1280.png");
-}
-
-.countryinfo{
-    display: none;
-    position: fixed;
-    top:5%;
-    right:0;
-    width: 500px;
-  
-
 }
 
 svg text{
@@ -93,7 +82,8 @@ svg path{
 
 .timeline ul{
     display: grid;
-    margin: 0 auto;
+    margin: 0;
+    padding:0; /*list-style:none;*/
     grid-template-columns: repeat(8, 1fr);
     background-color: #FFD4C7;
     animation:changeColor 10s ease-in-out infinite;
@@ -105,7 +95,7 @@ svg path{
     border-right: 2px solid #197195;
     cursor: pointer;
 }
-.timeline li:nth-child(1){
+.timeline li:first-child{
     border-left: 20px solid #2e6da4;
 }
 .timeline li:last-child{
