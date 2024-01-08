@@ -1755,7 +1755,7 @@
 
     //创建一个地图投影
     var projection = d3.geoNaturalEarth1()
-        .scale(600)
+        .scale(400)
         .translate([width/2,height/2])
 
     //创建一个地理路径生成器
@@ -1765,7 +1765,7 @@
     var path=g.selectAll('path')
     var text=g.selectAll('text')
 
-    const zoom=d3.zoom().on("zoom",zoomed)
+    const zoom=d3.zoom().scaleExtent(1,5).translateExtent([[-1000.-500],[width+1000,height+500]]).on("zoom",zoomed)
     svg.call(zoom)
     svg.on('wheel',function (){
         d3.event.preventDefault()
