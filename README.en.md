@@ -1,36 +1,37 @@
-# web_finalwork
+#  World map with timeline switching
 
 #### Description
-{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+
+A timeline switchable map of the world's state territories, containing eight periods between 1200 and 2000 AD, with historical brief information of each administrative region, based on html,css and js development.
 
 #### Software Architecture
 Software architecture description
 
 #### Installation
+download the source code：
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+
+```
+git clone https://gitee.com/ywc2023/webfinalwork.git
+```
+
 
 #### Instructions
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1. Click the timeline below to switch maps
+2. Click the specific area to pop up the text introduction box
+3. Press the left mouse button to pan the map
+4. Mouse wheel resizes the map
+5. The hover area changes color
 
 #### Contribution
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+Participant: Geng Zhan, Chang Wenyi
 
+#### Other reference links
 
-#### Gitee Feature
+Georeferenced boundaries for countries and cultural regions of the world Source:
+[Geographic reference around the world and cultural areas](https://github.com/aourednik/historical-basemaps)
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+D3 Community:
+[D3](https://observablehq.com/?utm_source=d3js-org&utm_medium=promo&utm_campaign=try-observable)
